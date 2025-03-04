@@ -11,3 +11,13 @@ def character_count(file_contents):
         else: #If not, add char with count 1
             char_count[char] = 1
     return char_count
+
+def sort_on(d): #Sort key needed for sort_count (not sure why yet)
+    return d["frequency"]
+
+def sort_count(char_count): #Sorted list of dicts w/ chars & frequency
+    frequency_list = []
+    for char in char_count:
+        frequency_list.append({"char": char, "frequency": char_count[char]})
+    frequency_list.sort(reverse=True, key=sort_on)
+    return frequency_list
