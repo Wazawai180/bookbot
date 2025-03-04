@@ -1,8 +1,13 @@
+import sys
 from stats import (
     get_word_count,
     character_count,
     sort_count,
 )
+
+if len(sys.argv) < 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
 
 def get_book_text(path_to_file):
     try:
@@ -15,7 +20,7 @@ def get_book_text(path_to_file):
         return None
     
 def main():
-    filepath = "/home/koreypatterson/workspace/github.com/bookbot/books/frankenstein.txt"
+    filepath = sys.argv[1]
     book_text = get_book_text(filepath)
     word_count = get_word_count(book_text)
     all_char = character_count(book_text)
